@@ -1,0 +1,373 @@
+\documentclass[]{article}
+
+\usepackage[hmargin=1.25in,vmargin=1in]{geometry}
+\usepackage{xeCJK}
+\usepackage{amsmath}
+\usepackage{cases}
+\usepackage{booktabs}
+\usepackage{makecell}
+\setCJKmainfont{SimSun}
+
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\numberwithin{equation}{section}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\N}{N}
+\DeclareMathOperator{\F}{F}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\begin{document}
+
+\section{}
+\begin{equation}
+    \operatorname{P}(A\cup B\cup C)=\operatorname{P}(A)+\operatorname{P}(B)+\operatorname{P}(C)-\operatorname{P}(AB)-\operatorname{P}(AC)-\operatorname{P}(BC)+\operatorname{P}(ABC)
+\end{equation}
+\begin{equation}
+    \operatorname{P}(A\overline{B})=\operatorname{P}(A)-\operatorname{P}(AB)
+\end{equation}
+
+\section{}
+\begin{equation}
+    \operatorname{P}(A|B)=\frac{\operatorname{P}(AB)}{\operatorname{P}(A)}
+\end{equation}
+\begin{equation}
+    \operatorname{P}(A_1A_2A_3)=\operatorname{P}(A_1)\operatorname{P}(A_2|A_1)\operatorname{P}(A_3|A_1A_2)
+\end{equation}
+\begin{equation}
+    \operatorname{P}(B)=\sum\limits_{i=1}^n\operatorname{P}(A_i)\operatorname{P}(B|A_i)
+\end{equation}
+\begin{equation}
+    \operatorname{P}(A_i|B)=\frac{\operatorname{P}(A_i)\operatorname{P}(B|A_i)}{\sum\limits_{j=1}^n\operatorname{P}(A_j)\operatorname{P}(B|A_j)},A_i\text{互不相容},B\subset \sum A_i
+\end{equation}
+\begin{equation}
+    \operatorname{P}(AB)=\operatorname{P}(A)\operatorname{P}(B)\iff A\independent B
+\end{equation}
+
+\section{$\N(\mu,\sigma^2)$}
+\begin{equation}
+    \Phi(x)=F(x),X\sim\N(0,1)
+\end{equation}
+\begin{equation}
+    F(x)=\Phi(\frac{x-\mu}{\sigma})
+\end{equation}
+\subsection{$\N(\mu_1,\mu_2;\sigma_1,\sigma_2;\rho)$}
+\begin{equation}
+    X\sim\N(\mu_1,\sigma_1);Y\sim\N(\mu_2,\sigma_2)
+\end{equation}
+
+\section{}
+\begin{equation}
+    f(x)=F^{'}(x)
+\end{equation}
+\begin{equation}
+    F(x)=\int_{-\infty}^x f(t)\dif t
+\end{equation}
+\subsection{}
+$y=g(x)$严格单调，$x=h(y)$为$g(x)$的反函数，则
+\begin{equation}
+    f_Y(y)=f_X(h(y))\left|h^{'}(y)\right|
+\end{equation}
+
+\section{}
+\begin{equation}
+    f(x,y)=\frac{\partial^2F(x,y)}{\partial x\partial y}
+\end{equation}
+\begin{equation}
+    F(x,y)=\int_{-\infty}^x\int_{-\infty}^y f(u,v)\dif u\dif v
+\end{equation}
+\begin{equation}
+    F_X(x)=F(x,+\infty);F_Y(y)=F(+\infty,y)
+\end{equation}
+\begin{equation}
+    f_X(x)=\int_{-\infty}^{+\infty}f(x,y)\dif y;f_Y(y)=\int_{-\infty}^{+\infty}f(x,y)\dif x
+\end{equation}
+\begin{equation}
+    F(x,y)=F_X(x)F_Y(y),X\independent Y
+\end{equation}
+\begin{equation}
+    f(x,y)=f_X(x)f_Y(y),X\independent Y
+\end{equation}
+
+\section{}
+\begin{equation}
+    f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)};f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}
+\end{equation}
+
+\section{}
+\subsection{$Z=X+Y$}
+\begin{equation}
+    f_Z(z)=\int_{-\infty}^{+\infty}f(x,z-x)\dif x=\int_{-\infty}^{+\infty}f(z-y,y)\dif y
+\end{equation}
+\begin{equation}
+    f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)\dif x=\int_{-\infty}^{+\infty}f_X(z-y)f_Y(y)\dif y,X\independent Y
+\end{equation}
+\subsection{$Z=\max\{X,Y\}$}
+\begin{equation}
+    F_Z(z)=\iint\limits_{x\le z,y\le z}f(x,y)\dif x\dif y
+\end{equation}
+\begin{equation}
+    F_Z(z)=F_X(z)F_Y(z),X\independent Y
+\end{equation}
+\subsection{$Z=\min\{X,Y\}$}
+\begin{equation}
+    F_Z(z)=1-\iint\limits_{x> z,y> z}f(x,y)\dif x\dif y
+\end{equation}
+\begin{equation}
+    F_Z(z)=1-[1-F_X(z)][1-F_Y(z)],X\independent Y
+\end{equation}
+
+\section{}
+\begin{center}
+    \begin{tabular}{ccccc}
+        \toprule
+        分布     & 记号                        & 分布列/概率密度                                                        & 期望            & 方差                 \\
+        \midrule
+        二项分布 & $\operatorname{B}(n,p)$     & \makecell[c]{$\operatorname{P}(X=k)=C_n^k p^k q^{n-k},$                                                         \\ $p+q=1$}      & $np$            & $npq$ \\
+        \midrule
+        泊松分布 & $\operatorname{P}(\lambda)$ & \makecell[c]{$\operatorname{P}(X=k)=\frac{\lambda^k}{k!}e^{-\lambda},$                                          \\$\lambda>0$}  & $\lambda$    & $\lambda$       \\
+            \midrule
+        几何分布 & $\operatorname{G}(p)$       & \makecell[c]{$\operatorname{P}(X=k)=q^{k-1}p,$                                                                  \\$p+q=1$}                             & $\frac{1}{p}$ & $\frac{q}{p^2}$ \\
+        \midrule
+        均匀分布 & $\operatorname{U}[a,b]$     & $f(x)=\begin{cases}
+                \frac{1}{b-a}, & a\le x\le b      \\
+                0,             & \text{otherwise}
+            \end{cases}  $                                    & $\frac{a+b}{2}$ & $\frac{(b-a)^2}{12}$ \\
+        \midrule
+        指数分布 & $\E(\lambda)$               & \makecell[c]{$f(x)=\begin{cases}
+                    \lambda e^{-\lambda x}, & x>0,   \\
+                    0,                      & x\le0,
+                \end{cases}  $                                                                \\$\lambda>0$}                     & $\frac{1}{\lambda}$ & $\frac{1}{\lambda^2}$ \\
+        \midrule
+        正态分布 & $\N(\mu,\sigma^2)$          & $f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$     & $\mu$           & $\sigma^2$           \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+\section{}
+\begin{equation}
+    \E(X)=\int_{-\infty}^{+\infty}xf(x)\dif x
+\end{equation}
+\begin{equation}
+    \E(X)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}xf(x,y)\dif x\dif y;\E(Y)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}yf(x,y)\dif x\dif y
+\end{equation}
+\begin{equation}
+    \E(g(X))=\int_{-\infty}^{+\infty}g(x)f(x)\dif x
+\end{equation}
+\begin{equation}
+    \E(C)=C
+\end{equation}
+\begin{equation}
+    \E(CX)=C\E(X)
+\end{equation}
+\begin{equation}
+    \E(X\pm Y)=\E(X)\pm \E(Y)
+\end{equation}
+\begin{equation}
+    \E(XY)=\E(X)\E(Y)+\Cov(X,Y)
+\end{equation}
+\begin{equation}
+    \E(XY)=\E(X)\E(Y)\iff X,Y\text{不相关}
+\end{equation}
+
+\section{}
+\begin{equation}
+    \D(X)=E([x-\E(x)]^2)=\int_{-\infty}^{+\infty}[x-\E(x)]^2f(x)\dif x
+\end{equation}
+\begin{equation}
+    \D(C)=0
+\end{equation}
+\begin{equation}
+    \D(CX)=C^2\D(X)
+\end{equation}
+\begin{equation}
+    \D(X)=\E(X^2)-\E^2(X)
+\end{equation}
+\begin{equation}
+    \D(X\pm Y)=\D(X)+\D(Y)\pm2\Cov(X,Y)
+\end{equation}
+\begin{equation}
+    \D(X\pm Y)=\D(X)+\D(Y)\iff X,Y\text{不相关}
+\end{equation}
+\begin{equation}
+    \D(XY)=\D(X)\D(Y)+\E^2(Y)\D(X)+\E^2(X)\D(Y),X\independent Y
+\end{equation}
+
+\section{}
+\begin{equation}
+    \Cov(X,Y)=\E(XY)-\E(X)\E(Y)
+\end{equation}
+\begin{equation}
+    \Cov(X,Y)=0\iff X,Y\text{不相关}
+\end{equation}
+\begin{equation}
+    \Cov(X,X)=\D(X)
+\end{equation}
+\begin{equation}
+    \Cov(X,Y)=\rho_{XY}\sqrt{\D(X)}\sqrt{\D(Y)}
+\end{equation}
+\begin{equation}
+    \Cov(aX+b,cY+d)=ac\Cov(X,Y)
+\end{equation}
+\begin{equation}
+    \Cov(X_1\pm X_2,Y)=\Cov(X_1,Y)\pm \Cov(X_2,Y);\Cov(X,Y_1\pm Y_2)=\Cov(X,Y_1)\pm \Cov(X,Y_2)
+\end{equation}
+
+\section{}
+\begin{equation}
+    \rho_{XY}=\frac{\Cov(X,Y)}{\sqrt{\D(X)}\sqrt{\D(Y)}}
+\end{equation}
+\begin{equation}
+    \rho_{XY}=0\iff X,Y\text{不相关}
+\end{equation}
+
+\section{}
+\begin{equation}
+    \operatorname{P}(\left|X-\E(X)\right|\ge\varepsilon)\le\frac{\D(X)}{\varepsilon^2}
+\end{equation}
+\begin{equation}
+    \operatorname{P}(\left|X-\E(X)\right|<\varepsilon)\ge1-\frac{\D(X)}{\varepsilon^2}
+\end{equation}
+
+\section{}
+\subsection{$\chi^2$分布}
+\begin{equation}
+    \sum_{i=1}^n X_i^2\sim\chi^2(n),X_i\sim\N(0,1),X_i\independent X_j
+\end{equation}
+\subsection{$t$分布}
+\begin{equation}
+    \frac{X}{\sqrt\frac{Y}{n}}\sim t(n),X\sim\N(0,1),Y\sim\chi^2(n)
+\end{equation}
+\subsection{$\F$分布}
+\begin{equation}
+    \frac{\frac{X}{n_1}}{\frac{Y}{n_2}}\sim\F(n_1,n_2),X\sim\chi^2(n_1),Y\sim\chi^2(n_2)
+\end{equation}
+
+\section{}
+\begin{equation}
+    \overline{X}=\frac{1}{n}\sum_{i=1}^n X_i
+\end{equation}
+\begin{equation}
+    S^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2=\frac{1}{n-1}(\sum_{i=1}^n X_i^2-n\overline{X}^2)
+\end{equation}
+\begin{equation}
+    S=\sqrt{S^2}
+\end{equation}
+
+\section{$X_1,X_2,\cdots,X_n$为总体$\N(\mu,\sigma^2)$的样本}
+\begin{equation}
+    \overline{X}\sim\N(\mu,\frac{\sigma^2}{n})
+\end{equation}
+\begin{equation}
+    \frac{n-1}{\sigma^2}S^2\sim\chi^2(n-1)
+\end{equation}
+\begin{equation}
+    u=\frac{\overline{X}-\mu}{\sigma}\sqrt n\sim\N(0,1)
+\end{equation}
+\begin{equation}
+    t=\frac{\overline{X}-\mu}{S}\sqrt n\sim t(n-1)
+\end{equation}
+\begin{equation}
+    \text{置信水平}=1-\alpha
+\end{equation}
+\subsection{$\sigma^2$已知，求$\mu$的置信区间}
+\begin{equation}
+    (\overline{X}-u_\frac{\alpha}{2}\frac{\sigma}{\sqrt n},\overline{X}+u_\frac{\alpha}{2}\frac{\sigma}{\sqrt n}),\Phi(u_\frac{\alpha}{2})=1-\frac{\alpha}{2}
+\end{equation}
+\subsection{$\sigma^2$未知，求$\mu$的置信区间}
+\begin{equation}
+    (\overline{X}-t_\frac{\alpha}{2}(n-1)\frac{S}{\sqrt n},\overline{X}+t_\frac{\alpha}{2}(n-1)\frac{S}{\sqrt n})
+\end{equation}
+\subsection{求$\sigma^2$的置信区间}
+\begin{equation}
+    (S\sqrt\frac{n-1}{\chi^2_{\frac{\alpha}{2}}(n-1)},S\sqrt\frac{n-1}{\chi^2_{1-\frac{\alpha}{2}}(n-1)})
+\end{equation}
+
+\section{}
+\subsection{矩估计}
+\begin{center}
+    1. 求$E(X),E(X_2),\cdots,E(X_m)$，$m$为未知参数个数\\
+    2. 用$E(X_i)$表示$\theta_j$\\
+    3. 代入样本的$E(X_i)$，$\theta_j$写成$\hat{\theta}_j$
+\end{center}
+\subsection{最大似然估计}
+\subsubsection{方法一}
+\begin{center}
+    1. 求$L(X_1,X_2,\cdots,X_n;\theta)=\prod\limits_{i=1}^nf(X_i)$\\
+    2. 求$\ln L$\\
+    3. 求$\dfrac{\dif \ln L}{\dif\theta}$\\
+    4. 解方程$\dfrac{\dif \ln L}{\dif\theta}=0$
+
+\end{center}
+\subsubsection{方法二}
+\begin{center}
+    1. 求$f(X_1),f(X_2),\cdots,f(X_n)$\\
+    2. 求$\ln f(X_i)$\\
+    3. 求$\dfrac{\dif \ln f(X_i)}{\dif\theta}$\\
+    4. 解方程$\sum\limits_{i=1}^n\dfrac{\dif \ln f(X_i)}{\dif\theta}=0$
+\end{center}
+
+\section{}
+\subsection{无偏性}
+\begin{equation}
+    \E(\hat{\theta})=\theta
+\end{equation}
+\subsection{有效性}
+\begin{equation}
+    \D(\hat{\theta})\le\D(\hat{\theta}^{'}),\text{至少对某个}\theta_0\text{小于号成立}
+\end{equation}
+
+\newpage
+\section{}
+\subsection{}
+\subsubsection{$\sigma$已知，检验$H_0:\mu=\mu_0,H_1:\mu\ne\mu_0$}
+\begin{equation}
+    \left|u\right|\ge u_\frac{\alpha}{2},\text{拒绝}H_0
+\end{equation}
+\subsubsection{$\sigma$已知，检验$H_0:\mu\le\mu_0,H_1:\mu>\mu_0$}
+\begin{equation}
+    u\ge u_\alpha,\text{拒绝}H_0
+\end{equation}
+\subsubsection{$\sigma$已知，检验$H_0:\mu\ge\mu_0,H_1:\mu<\mu_0$}
+\begin{equation}
+    u\le -u_\alpha,\text{拒绝}H_0
+\end{equation}
+\subsection{}
+\subsubsection{$\sigma$未知，检验$H_0:\mu=\mu_0,H_1:\mu\ne\mu_0$}
+\begin{equation}
+    \left|t\right|\ge t_\frac{\alpha}{2}(n-1),\text{拒绝}H_0
+\end{equation}
+\subsubsection{$\sigma$未知，检验$H_0:\mu\le\mu_0,H_1:\mu>\mu_0$}
+\begin{equation}
+    t\ge t_\alpha(n-1),\text{拒绝}H_0
+\end{equation}
+\subsubsection{$\sigma$未知，检验$H_0:\mu\ge\mu_0,H_1:\mu<\mu_0$}
+\begin{equation}
+    t\le -t_\alpha(n-1),\text{拒绝}H_0
+\end{equation}
+\subsection{}
+\subsubsection{检验$H_0:\sigma^2=\sigma_0^2,H_1:\sigma^2\ne\sigma_0^2$}
+\begin{equation}
+    \chi^2\ge\chi_\frac{\alpha}{2}^2(n-1)\text{或}\chi^2\le\chi_{1-\frac{\alpha}{2}}^2(n-1),\text{拒绝}H_0
+\end{equation}
+\subsubsection{检验$H_0:\sigma^2\le\sigma_0^2,H_1:\sigma^2>\sigma_0^2$}
+\begin{equation}
+    \chi^2\ge\chi_\alpha^2(n-1),\text{拒绝}H_0
+\end{equation}
+\subsubsection{检验$H_0:\sigma^2\ge\sigma_0^2,H_1:\sigma^2<\sigma_0^2$}
+\begin{equation}
+    \chi^2\le\chi_{1-\alpha}^2(n-1),\text{拒绝}H_0
+\end{equation}
+
+\section{}
+\begin{equation}
+    \begin{aligned}
+        \Gamma(s)=\int_0^{+\infty}x^{s-1}e^{-x}\dif x \\
+        \Gamma(1)=1,\Gamma(\frac1 2)=\sqrt \pi        \\
+        \Gamma(s+1)=s\Gamma(s),\Gamma(n)=(n-1)!
+    \end{aligned}
+\end{equation}
+
+\end{document}
